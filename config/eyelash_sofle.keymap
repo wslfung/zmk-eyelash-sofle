@@ -5,11 +5,10 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/outputs.h>
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
@@ -27,9 +26,7 @@
     trigger-period-ms = <16>;
 };
 
-
 / {
-
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
@@ -38,7 +35,7 @@
             then-layer = <3>;
         };
     };
-    
+
     behaviors {
         tpmt: tpmt {
             compatible = "zmk,behavior-hold-tap";
@@ -57,6 +54,7 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <100>;
     };
 
@@ -65,11 +63,11 @@
 
         layer0 {
             bindings = <
-&kp ESC     &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R   &kp T        &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp BSLH
-&kp CAPS    &kp A      &kp S         &kp D         &kp F   &kp G        &kp LEFT_ARROW   &kp H      &kp J      &kp K      &kp L            &kp SEMI    &kp APOS
-&kp LSHFT   &kp Z      &kp X         &kp C         &kp V   &kp B        &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp FSLH    &kp ENTER
-&kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
+&kp ESC     &kp N1          &kp N2            &kp N3     &kp N4  &kp N5    &kp UP_ARROW     &kp N6  &kp N7     &kp N8      &kp N9         &kp N0         &kp BACKSPACE
+&kp TAB     &kp Q           &kp W             &kp E      &kp R   &kp T     &kp DOWN_ARROW   &kp Y   &kp U      &kp I       &kp O          &kp P          &kp BSLH
+&kp CAPS    &tpmt LCTRL A   &tpmt LEFT_ALT S  &kp D      &kp F   &kp G     &kp LEFT_ARROW   &kp H   &kp J      &kp K       &kp L          &kp SEMI       &kp APOS
+&kp LSHFT   &kp Z           &kp X             &kp C      &kp V   &kp B     &kp RIGHT_ARROW  &kp N   &kp M      &kp COMMA   &kp DOT        &kp FSLH       &kp ENTER
+&kp C_MUTE  &kp LC(INSERT)  &kp LS(INSERT)    &kp ENTER  &mo 1   &mo 2     &kp ENTER        &mo 1   &kp SPACE  &kp DELETE  &kp LC(PG_UP)  &kp LC(PG_DN)
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -78,11 +76,11 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
-&trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
-&trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
+&kp F1      &kp F2           &kp F3          &kp F4           &kp F5           &kp F6             &mmv MOVE_UP     &kp F7      &kp F8     &kp F9            &kp F10            &kp F11    &kp F12
+&trans      &kp GRAVE        &trans          &trans           &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp INSERT  &kp HOME   &kp UP            &kp END            &kp PG_UP  &trans
+&trans      &trans           &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp DELETE  &kp LEFT   &kp DOWN          &kp RIGHT          &kp PG_DN  &trans
+&trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &kp MINUS   &kp EQUAL  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans     &trans
+&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans      &trans     &trans            &mkp MB4           &mkp MB5
             >;
 
             display-name = "layer1";
