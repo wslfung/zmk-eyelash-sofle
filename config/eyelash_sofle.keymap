@@ -30,6 +30,29 @@
 
 / {
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        adjust_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+    
+    behaviors {
+        tpmt: tpmt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TPMT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <125>;
+            require-prior-idle-ms = <125>;
+            flavor = "tap-preferred";
+        };
+    };
+
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
