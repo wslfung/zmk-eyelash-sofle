@@ -76,11 +76,11 @@
 
         nav {
             bindings = <
-&kp F1      &kp F2           &kp F3          &kp F4           &kp F5           &kp F6             &mmv MOVE_UP     &kp F7      &kp F8     &kp F9            &kp F10            &kp F11    &kp F12
+&kp F12     &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6      &kp F7     &kp F8            &kp F9             &kp F10    &kp F11
 &trans      &kp GRAVE        &trans          &trans           &kp PRINTSCREEN  &mkp RCLK          &mmv MOVE_DOWN   &kp INSERT  &kp HOME   &kp UP            &kp END            &kp PG_UP  &trans
 &trans      &trans           &trans          &trans           &trans           &trans             &mmv MOVE_LEFT   &kp DELETE  &kp LEFT   &kp DOWN          &kp RIGHT          &kp PG_DN  &kp LGUI
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &kp MINUS   &kp EQUAL  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans     &trans
-&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans      &trans     &trans            &mkp MB4           &mkp MB5
+&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans      &kp ENTER  &trans            &mkp MB4           &mkp MB5
             >;
 
             display-name = "nav";
